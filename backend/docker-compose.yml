@@ -1,0 +1,21 @@
+version: '3.8'
+
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: laravel_app
+    ports:
+      - "8000:8000"
+    volumes:
+      - .:/var/www/html
+    depends_on:
+      - sqlite
+
+  sqlite:
+    image: alpine
+    container_name: sqlite_container
+    volumes:
+      - ./sqlite:/data
+    command: tail -f /dev/null

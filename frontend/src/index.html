@@ -1,0 +1,50 @@
+---
+title: "Le devoirs"
+description: "L'Adverstisement du Arcaea"
+preloadImg: "/assets/images/front/landing1.jpg"
+permalink: "/"
+tags: "sitemap" # Sitemap will use all pages in content/, due to content.json. As index.html is not included in content/ we need to manually add the sitemap tag to this page (only).
+eleventyNavigation:
+  key: Home
+  order: 100
+---
+
+{% extends "layouts/base.html" %} {% block head %}
+
+<!-- Script for Netlify Identity -->
+<script
+  defer
+  src="https://identity.netlify.com/v1/netlify-identity-widget.js"
+></script>
+<script defer>
+  if (window.netlifyIdentity) {
+    window.netlifyIdentity.on("init", (user) => {
+      if (!user) {
+        window.netlifyIdentity.on("login", () => {
+          document.location.href = "/admin/";
+        });
+      }
+    });
+  }
+</script>
+{% endblock %} {% block body %} {% include
+'components/about/banner.html' %} 
+
+<section class="advertisement">
+    <div class="container" style="margin-top: 100px;">
+        <h2 style="text-align: center;">Arcaea</h2>
+        <p style="text-align: center;">Mobile 3D rhythm game</p>
+        <a href="https://arcaea.lowiro.com/en" class="">
+          <img src="assets/images/arcaea.jpg" alt="Arcaea" style="width: 100%; height: 100%;" />
+        </a>
+        <h2 style="text-align: center; margin-top: 100px;">In Falsus</h2>
+        <p style="text-align: center;">Upcoming PC rhythm game</p>
+        <video autoplay controls loop style="width: 100%; height: 100%;">
+          <source src="assets/images/infalsus.mp4" type="video/mp4">
+          <source src="assets/images/infalsus.webm" type="video/webm">
+          Your browser does not support the video tag :(
+        </video>
+    </div>
+</section>
+
+{% endblock %}

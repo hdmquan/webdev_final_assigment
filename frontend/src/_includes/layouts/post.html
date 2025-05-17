@@ -1,0 +1,142 @@
+{% extends "layouts/base.html" %} {% block head %}
+<link rel="stylesheet" href="/assets/css/blog.css" />
+{% endblock %} {% block body %}
+<!-- ============================================ -->
+<!--                    LANDING                   -->
+<!-- ============================================ -->
+
+<section class="page-header" data-background="{{ image }}">
+  <div class="overlay"></div>
+  <div class="shapes">
+    <div class="shape shape-1">
+      <img
+        src="/assets/images/shapes/page-header-shape-1.png"
+        alt="web design shape"
+      />
+    </div>
+    <div class="shape shape-2">
+      <img
+        src="/assets/images/shapes/page-header-shape-2.png"
+        alt="web design shape"
+      />
+    </div>
+    <div class="shape shape-3">
+      <img
+        src="/assets/images/shapes/page-header-shape-3.png"
+        alt="web design shape"
+      />
+    </div>
+  </div>
+  <div class="container">
+    <div class="page-header-content text-center">
+      <h1 class="title">{{ title }}</h1>
+      <h4 class="sub-title">
+        <a class="home" href="/">Home </a>
+        <span></span>
+        <a class="inner-page" href="/blog"> Blog</a>
+      </h4>
+    </div>
+  </div>
+</section>
+<!-- ./ page-header -->
+
+<section class="blog-details pt-130 pb-130">
+  <style>
+    .blog-details-content p,
+    .blog-details-content li {
+      font-size: 1.2rem;
+      color: #000;
+      margin-bottom: 1rem;
+    }
+    .blog-details-content a {
+      color: #000;
+      text-decoration: underline;
+    }
+  </style>
+  <div class="container">
+    <div class="row gy-5">
+      <div class="col-lg-8 col-md-12">
+        <div class="blog-details-wrap">
+          <div class="blog-details-img mb-40">
+            <img src="{{ image }}" alt="{{ imageAlt }}" />
+          </div>
+          <ul class="post-meta">
+            <li>
+              <i class="fa-sharp fa-regular fa-clock"></i>{{ date | postDate}}
+            </li>
+            <li><i class="fa-light fa-user"></i>Post by: {{ Author }}</li>
+          </ul>
+          <div class="blog-details-content">{{ content | safe }}</div>
+          <div class="tags">
+            <div class="tag-left">
+              <ul class="tag-list">
+                {% for tag in tags %}
+                <li>
+                  <a href="/blog/tag/{{ tag | slugify }}">{{ tag }}</a>
+                </li>
+                {% endfor %}
+              </ul>
+            </div>
+            <div class="social-list-wrap">
+              <h4 class="follow">Follow Us:</h4>
+              <ul class="social-list">
+                <li>
+                  <a href="https://www.facebook.com/northmelbourneweb/">
+                    <i class="fab fa-facebook-f"></i>
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href="https://www.linkedin.com/company/north-melourne-web/"
+                  >
+                    <i class="fab fa-linkedin-in"></i>
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div class="blog-author-wrap">
+            <div class="blog-author-item">
+              <div class="author-img">
+                <img src="/assets/images/blog/author-img.png" alt="img" />
+              </div>
+              <div class="content">
+                <h3 class="name">About Auhor</h3>
+                <p>
+                  Alan is the founder of North Melbourne Web, an agency
+                  providing professional, fully managed websites for small
+                  businesses through an affordable Website-as-a-Service (WaaS)
+                  model.
+                </p>
+                <ul class="social-list">
+                  <li>
+                    <a href="https://www.facebook.com/northmelbourneweb/">
+                      <i class="fab fa-facebook-f"></i>
+                    </a>
+                  </li>
+                  <li>
+                    <a
+                      href="https://www.linkedin.com/company/north-melourne-web/"
+                    >
+                      <i class="fab fa-linkedin-in"></i>
+                    </a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script>
+    // This script will find all <a> tags inside the .blog-details-content div and force them to open in a new tab.
+    document.querySelectorAll(".blog-details-content a").forEach((link) => {
+      link.setAttribute("target", "_blank");
+    });
+  </script>
+</section>
+<!-- End .main-content -->
+
+{% include "components/blog.html" %} {% include
+"components/front/appointment.html" %} {% endblock %}
