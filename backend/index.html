@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Login</title>
+</head>
+<body>
+  <form id="loginForm" action="login.php" method="POST" onsubmit="return validateForm()">
+    <label for="phone">Phone Number:</label>
+    <input type="text" id="phone" name="phone" maxlength="10" required><br><br>
+
+    <label for="password">Password:</label>
+    <input type="password" id="password" name="password" required><br><br>
+
+    <input type="submit" value="Login">
+  </form>
+
+  <script>
+    function validateForm() {
+      const phone = document.getElementById('phone').value;
+      if (!/^\d+$/.test(phone)) {
+        alert("Phone number must contain only digits.");
+        return false;
+      }
+      return true;
+    }
+  </script>
+</body>
+</html>

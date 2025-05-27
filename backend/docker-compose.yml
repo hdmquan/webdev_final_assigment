@@ -4,18 +4,22 @@ services:
   app:
     build:
       context: .
-      dockerfile: Dockerfile
-    container_name: laravel_app
     ports:
-      - "8000:8000"
+      - "8000:80"
     volumes:
       - .:/var/www/html
     depends_on:
-      - sqlite
-
-  sqlite:
-    image: alpine
-    container_name: sqlite_container
+      - mysql
+  mysql:
+    image: mysql:8.0
+    restart: always
+    environment:
+      MYSQL_DATABASE: db
+      MYSQL_USER: admin
+      MYSQL_PASSWORD: admin
+      MYSQL_ROOT_PASSWORD: admin
+    command: --default-authentication-plugin=mysql_native_password
+    ports:
+      - "3306:3306"
     volumes:
-      - ./sqlite:/data
-    command: tail -f /dev/null
+      - ./database/init.sql:/docker-entrypoint-initdb.d/init.sql
