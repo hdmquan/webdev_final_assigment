@@ -1,0 +1,19 @@
+.advertisement .container {
+    margin-top: 100px;
+}
+
+.advertisement h2 {
+    text-align: center;
+    margin-top: 100px;
+}
+
+.advertisement p {
+    text-align: center;
+}
+
+.advertisement img,
+.advertisement video {
+    width: 100%;
+    height: 100%;
+}
+
