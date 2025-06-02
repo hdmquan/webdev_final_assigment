@@ -5,11 +5,15 @@ services:
     build:
       context: .
     ports:
-      - "8000:80"
+      - "8000:8000"
+    command: php artisan serve --host=0.0.0.0 --port=8000
     volumes:
       - .:/var/www/html
     depends_on:
       - mysql
+      ports:
+
+
   mysql:
     image: mysql:8.0
     restart: always
